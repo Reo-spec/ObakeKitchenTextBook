@@ -1,0 +1,73 @@
+/**
+ * Gimmick.h
+ * ステージに配置されるギミックの基底クラス
+ */
+#pragma once
+#include "Actor.h"
+
+
+/**
+ * ギミッククラス
+ */
+class Gimmick : public Actor
+{
+protected:
+
+
+public:
+	Gimmick();
+	~Gimmick();
+
+	virtual bool Start() override;
+	virtual void Update() override;
+	virtual void Render(RenderContext& renderContect) override;
+
+public:
+	virtual void Initialize(const char* assetName, const Vector3& position, const Vector3& scale, const Quaternion& rotation);
+};
+
+
+
+
+/*************************************/
+
+
+class StaticGimmick : public Gimmick
+{
+protected:
+	PhysicsStaticObject m_physicalObject;
+
+
+public:
+	StaticGimmick() {}
+	~StaticGimmick() {}
+
+	virtual bool Start() override;
+	virtual void Update() override;
+	virtual void Render(RenderContext& renderContect) override;
+
+
+public:
+	virtual void Initialize(const char* assetName, const Vector3& position, const Vector3& scale, const Quaternion& rotation) override;
+};
+
+
+
+
+/*************************************/
+
+
+class PointLightGimmick : public StaticGimmick
+{
+protected:
+	SPointLight* m_pointLight[5];
+
+
+public:
+	PointLightGimmick() {}
+	~PointLightGimmick() {}
+
+	virtual bool Start() override;
+	virtual void Update() override;
+	virtual void Render(RenderContext& renderContect) override;
+};

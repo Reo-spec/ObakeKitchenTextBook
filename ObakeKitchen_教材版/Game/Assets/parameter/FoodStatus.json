@@ -1,0 +1,8 @@
+[
+    {
+        "comment": "フードステータス",
+        "radius":10.0,
+        "height":10.0,
+        "addForcePower": 2000.0
+    }
+]
